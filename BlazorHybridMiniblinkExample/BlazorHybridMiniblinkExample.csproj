@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>BlazorHybridMiniblinkExample</RootNamespace>
-		<Platforms>AnyCPU;x86</Platforms>
+		<Platforms>AnyCPU</Platforms>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 
 		<PublishSingleFile>true</PublishSingleFile>
@@ -27,8 +27,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="miniblink_4949_x32.dll">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+	  <None Update="miniblink.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="miniblink.so">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

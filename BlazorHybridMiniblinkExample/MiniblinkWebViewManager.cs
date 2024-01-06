@@ -33,7 +33,7 @@ namespace BlazorHybridMiniblinkExample
         {
             var u = absoluteUri.ToString();
             Program.logger.Debug($"MiniblinkWebViewManager: {u}");
-            MiniblinkNative.wkeLoadW(_webView, absoluteUri.AbsoluteUri);
+            MiniblinkNative.mbLoadURL(_webView, absoluteUri.AbsoluteUri.StrToUtf8Ptr());
         }
 
         protected override void SendMessage(string message)

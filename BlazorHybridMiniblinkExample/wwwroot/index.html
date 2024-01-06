@@ -53,7 +53,7 @@
 
         window.external = {
             sendMessage: function (message) {
-                window.MiniblinkPostMessage(message);
+                window.mbQuery(0, message);
             },
             receiveMessage: function (callback) {
                 window.__receiveMessageCallbacks.push(callback);
