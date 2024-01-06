@@ -37,7 +37,7 @@ class Program
                 .CreateLogger();
         logger = Log.ForContext<Program>();
 
-        MiniblinkNative.mbInit(IntPtr.Zero); ;
+        MiniblinkNative.mbInit(IntPtr.Zero);
 
         webWindow = MiniblinkNative.mbCreateWebWindow(MiniblinkNative.mbWindowType.WKE_WINDOW_TYPE_POPUP, IntPtr.Zero, 0, 0, 800, 600);
         mainFrameId = MiniblinkNative.mbWebFrameGetMainFrame(webWindow);
