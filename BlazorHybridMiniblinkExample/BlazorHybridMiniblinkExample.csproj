@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>BlazorHybridMiniblinkExample</RootNamespace>
-		<Platforms>AnyCPU</Platforms>
+		<Platforms>AnyCPU;x86</Platforms>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 
 		<PublishSingleFile>true</PublishSingleFile>

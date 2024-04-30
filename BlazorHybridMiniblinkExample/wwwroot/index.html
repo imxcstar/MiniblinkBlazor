@@ -10,41 +10,6 @@
     <link rel="stylesheet" href="BlazorHybridMiniblinkExample.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <script>
-        // 检查浏览器是否支持 getRootNode() 方法
-        if (!('getRootNode' in Element.prototype)) {
-            // 如果不支持，创建一个兼容的 getRootNode() 方法
-            Element.prototype.getRootNode = function (options) {
-                // 判断当前节点是否为ShadowRoot，如果是则返回其host，否则返回父节点，直至根节点
-                let currentNode = this;
-                while (currentNode.parentNode) {
-                    currentNode = currentNode.parentNode;
-                }
-                return currentNode;
-            };
-        }
-
-        // 检查浏览器是否支持 composedPath() 方法
-        if (!Event.prototype.composedPath) {
-            Event.prototype.composedPath = function () {
-                let path = [];
-                let currentElem = this.target;
-
-                while (currentElem) {
-                    path.push(currentElem);
-
-                    if (currentElem.tagName === 'HTML') {
-                        path.push(document);
-                        path.push(window);
-                        return path;
-                    }
-
-                    currentElem = currentElem.parentElement;
-                }
-                return path;
-            };
-        }
-
-
         window.__receiveMessageCallbacks = [];
 
         window.__dispatchMessageCallback = function (message) {
@@ -74,7 +39,7 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    <script src="blazor.webview.js"></script>
+    <script src="_framework/blazor.webview.js"></script>
 </body>
 
 </html>

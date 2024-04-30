@@ -42,7 +42,7 @@ class Program
         webWindow = MiniblinkNative.mbCreateWebWindow(MiniblinkNative.mbWindowType.WKE_WINDOW_TYPE_POPUP, IntPtr.Zero, 0, 0, 800, 600);
         mainFrameId = MiniblinkNative.mbWebFrameGetMainFrame(webWindow);
 
-        MiniblinkNative.mbSetWindowTitle(webWindow, "BlazorHybridMiniblinkExample".StrToUtf8Ptr());
+        //MiniblinkNative.mbSetWindowTitle(webWindow, "BlazorHybridMiniblinkExample".StrToUtf8Ptr());
         MiniblinkNative.mbSetCspCheckEnable(webWindow, false);
 
         MiniblinkNative.mbOnClose(webWindow, static (IntPtr webView, IntPtr param, IntPtr unuse) =>
@@ -138,19 +138,16 @@ class Program
         {
             while (true)
             {
-                MiniblinkNative.mbCallUiThreadAsync(static (IntPtr param1, IntPtr param2) =>
+                if (isStart && m != null)
                 {
-                    if (isStart && m != null)
+                    if (m.MessageQueue.TryDequeue(out var script))
                     {
-                        if (m.MessageQueue.TryDequeue(out var script))
+                        MiniblinkNative.mbRunJs(m.WebView, mainFrameId, script.StrToUtf8Ptr(), false, static (IntPtr webView, IntPtr param, IntPtr es, long v) =>
                         {
-                            MiniblinkNative.mbRunJs(m.WebView, mainFrameId, script.StrToUtf8Ptr(), false, static (IntPtr webView, IntPtr param, IntPtr es, long v) =>
-                            {
 
-                            }, IntPtr.Zero, IntPtr.Zero);
-                        }
+                        }, IntPtr.Zero, IntPtr.Zero);
                     }
-                }, IntPtr.Zero, IntPtr.Zero);
+                }
             }
         });
         t.Start();
