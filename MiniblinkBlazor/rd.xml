@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Directives>
+	<Application>
+		<Assembly Name="MiniblinkBlazor" Dynamic="Required All" />
+		<Assembly Name="Microsoft.AspNetCore.Components.WebView" Dynamic="Required All" />
+	</Application>
+</Directives>
